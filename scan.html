@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Envío de Señal</title>
+</head>
+<body>
+  <script>
+    const ws = new WebSocket('wss://https://ejemplocodigoqr.netlify.app/');
+    ws.onopen = function () {
+      const message = 'Contenido actualizado tras escaneo del QR';
+      console.log('Enviando mensaje: ', message);
+      ws.send(message);
+    };
+    ws.onerror = function (error) {
+      console.log('Error de WebSocket: ', error);
+    };
+    ws.onclose = function () {
+      console.log('Conexión WebSocket cerrada');
+    };
+  </script>
+  <h1>¡Señal enviada!</h1>
+</body>
+</html>
